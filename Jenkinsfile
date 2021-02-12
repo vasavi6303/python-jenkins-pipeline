@@ -1,9 +1,10 @@
 node('master') {
     stage("Fetch Source Code") {
-        git ''
+        cleanWS()
+        git([url:'https://github.com/vasavi6303/python-jenkins-pipeline',branch:'add-functions-and-tests'])
     }
     
-    dir('Lesson5') {
+    dir('.'){
         printMessage('Running Pipeline')
         stage("Testing") {
             sh 'python test_functions.py'
